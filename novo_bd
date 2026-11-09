@@ -1,0 +1,174 @@
+
+-- MySQL dump 10.13
+-- MySQL Server 8.0.46
+
+SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT;
+SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS;
+SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION;
+SET @OLD_TIME_ZONE=@@TIME_ZONE;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;
+SET @OLD_SQL_MODE=@@SQL_MODE;
+SET @OLD_SQL_NOTES=@@SQL_NOTES;
+
+SET NAMES utf8mb4;
+SET TIME_ZONE='+00:00';
+SET UNIQUE_CHECKS=0;
+SET FOREIGN_KEY_CHECKS=0;
+SET SQL_MODE='NO_AUTO_VALUE_ON_ZERO';
+SET SQL_NOTES=0;
+
+-- =====================================
+-- TABELA DADOS
+-- =====================================
+
+DROP TABLE IF EXISTS `dados`;
+
+CREATE TABLE `dados` (
+  `codigo` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) DEFAULT NULL,
+  `sobrenome` VARCHAR(45) DEFAULT NULL,
+  `email` VARCHAR(100) DEFAULT NULL,
+  `pass` VARCHAR(255) DEFAULT NULL,
+  `endereco` VARCHAR(100) DEFAULT NULL,
+  `estado` VARCHAR(45) DEFAULT NULL,
+  `cidade` VARCHAR(45) DEFAULT NULL,
+  `escola` VARCHAR(100) DEFAULT NULL,
+  `ano_escolar` VARCHAR(45) DEFAULT NULL,
+  `telefone` VARCHAR(20) DEFAULT NULL,
+  `nota 1` VARCHAR(45) DEFAULT NULL,
+  `nota 2` VARCHAR(45) DEFAULT NULL,
+  `media nota` VARCHAR(45) DEFAULT NULL,
+  `situacao` VARCHAR(45) DEFAULT NULL,
+  `status_cadastro` ENUM('pendente','aprovado','rejeitado')
+    NOT NULL DEFAULT 'pendente',
+  PRIMARY KEY (`codigo`)
+) ENGINE=InnoDB AUTO_INCREMENT=3
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `dados` VALUES
+(1,'Sebastian','Alejandro',
+'sebastian.alejandro@escola.pr.gov.br',
+'Sebas123!','auiodbhsosauduiasbdj','PR',
+'Matelândia','Colégio Estadual Euclides da Cunha',
+'3º Ano - Ensino Médio','83924987236457',
+'6','6.2','6.1','Aprovado','aprovado'),
+
+(2,'Vinicius','SDS',
+'vinicius.sds@escola.pr.gov.br',
+'Vini123@','asdsadsadasd','PR',
+'Matelândia','Colégio Estadual Euclides da Cunha',
+'3º Ano - Ensino Médio','3245423452435',
+NULL,NULL,NULL,NULL,'pendente');
+
+
+-- =====================================
+-- TABELA FREQUENCIA
+-- =====================================
+
+DROP TABLE IF EXISTS `frequencia`;
+
+CREATE TABLE `frequencia` (
+  `id_frequencia` INT NOT NULL AUTO_INCREMENT,
+  `id_aluno` INT NOT NULL,
+  `data` DATE NOT NULL,
+  `disciplina` VARCHAR(45) NOT NULL,
+  `status` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`id_frequencia`),
+  UNIQUE KEY `idx_aluno_data_disc`
+    (`id_aluno`,`data`,`disciplina`),
+  CONSTRAINT `fk_frequencia_aluno`
+    FOREIGN KEY (`id_aluno`)
+    REFERENCES `dados` (`codigo`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=3
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `frequencia` VALUES
+(1,1,'2026-11-02','Matemática','Ausente'),
+(2,2,'2026-11-02','Matemática','Presente');
+
+
+-- =====================================
+-- TABELA NOTAS ESCOLARES
+-- =====================================
+
+DROP TABLE IF EXISTS `notas escolares`;
+
+CREATE TABLE `notas escolares` (
+  `idnotas escolares` INT NOT NULL,
+  `nota 1` VARCHAR(45) DEFAULT NULL,
+  `nota 2` VARCHAR(45) DEFAULT NULL,
+  `nota 3` VARCHAR(45) DEFAULT NULL,
+  `media` VARCHAR(45) DEFAULT NULL,
+  `situação` VARCHAR(45) DEFAULT NULL,
+  PRIMARY KEY (`idnotas escolares`),
+  CONSTRAINT `fk_aluno_notas`
+    FOREIGN KEY (`idnotas escolares`)
+    REFERENCES `dados` (`codigo`)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+) ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `notas escolares` VALUES
+(1,'5','10','3','6.0','Aprovado'),
+(2,'10','10','0','6.7','Aprovado');
+
+
+-- =====================================
+-- TABELA USERS
+-- =====================================
+
+DROP TABLE IF EXISTS `users`;
+
+CREATE TABLE `users` (
+  `id_users` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(45) DEFAULT NULL,
+  `sobrenome` VARCHAR(45) DEFAULT NULL,
+  `email` VARCHAR(100) DEFAULT NULL,
+  `pass` VARCHAR(255) DEFAULT NULL,
+  `matricula` VARCHAR(45) DEFAULT NULL,
+  `endereco` VARCHAR(100) DEFAULT NULL,
+  `telefone` VARCHAR(20) DEFAULT NULL,
+  `titulacao` VARCHAR(45) DEFAULT NULL,
+  `estado` VARCHAR(45) DEFAULT NULL,
+  `cidade` VARCHAR(45) DEFAULT NULL,
+  `escola` VARCHAR(100) DEFAULT NULL,
+  `disciplina` VARCHAR(45) DEFAULT NULL,
+  PRIMARY KEY (`id_users`)
+) ENGINE=InnoDB AUTO_INCREMENT=4
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO `users` VALUES
+(1,'sa','sas@gmail.com',NULL,NULL,'123',
+NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+
+(2,'zzz','zzz@gmail.com',NULL,NULL,'321',
+NULL,NULL,NULL,NULL,NULL,NULL,NULL),
+
+(3,'daniel','mossner',
+'daniel.mossner@escola.pr.gov.br',
+'d@n1','1233124123421312',
+'siiiiiiiiiiiiii','27938478932',
+'Mestrado','PR','Matelândia',
+'Colégio Estadual Euclides da Cunha','Matemática');
+
+
+-- =====================================
+-- RESTAURAR CONFIGURAÇÕES DO MYSQL
+-- =====================================
+
+SET TIME_ZONE=@OLD_TIME_ZONE;
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT;
+SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS;
+SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION;
+SET SQL_NOTES=@OLD_SQL_NOTES;

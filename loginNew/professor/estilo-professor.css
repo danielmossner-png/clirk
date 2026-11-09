@@ -1,0 +1,1161 @@
+/*
+ * ESTILO COMPARTILHADO — PAINEL DO PROFESSOR
+ * A página inicial utiliza a base visual.
+ * As regras específicas de aprovação estão limitadas a body.pagina-aprovacao.
+ */
+
+/* CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f8;
+            color: #333333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* CABEÇALHO */
+        .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 12px 35px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            min-width: 0;
+        }
+
+        .user-badge {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 7px 13px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .user-badge a {
+            color: #ff7777;
+            text-decoration: none;
+            margin-left: 5px;
+        }
+
+        .user-badge a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-logo {
+            height: 38px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-brand h1 {
+            font-size: 20px;
+            color: #004d80;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        /* NAVEGAÇÃO */
+        .nav-items {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .nav-button {
+            text-decoration: none;
+            color: #004d80;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 9px 13px;
+            border-radius: 5px;
+            transition: background-color 0.2s, color 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-button.active {
+            background-color: #00994d;
+            color: #ffffff;
+        }
+
+        .nav-button:hover:not(.active) {
+            background-color: #e6f0fa;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px;
+        }
+
+        .menu-toggle img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
+        /* BANNER */
+        .banner {
+            background: linear-gradient(90deg, #008542 0%, #004d80 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 48px 20px;
+        }
+
+        .banner-content {
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .banner-content h2 {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .banner-content p {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        /* CONTEÚDO PRINCIPAL */
+        .main {
+            width: 100%;
+            max-width: 1100px;
+            margin: 35px auto 60px;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #004d80;
+            font-size: 21px;
+            font-weight: bold;
+            margin-bottom: 35px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 42px;
+            height: 3px;
+            background-color: #00994d;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* GRADE DOS CARTÕES */
+        .atractions {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        /* CARTÕES */
+        .box-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            border-top: 4px solid #00994d;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+            min-width: 0;
+        }
+
+        .box-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            height: 155px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background-color: #ffffff;
+        }
+
+        .at-img {
+            max-height: 100px;
+            max-width: 85%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .card-body {
+            padding: 0 25px 25px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .fig {
+            font-size: 16px;
+            font-weight: bold;
+            color: #004d80;
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 13px;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 22px;
+            flex-grow: 1;
+        }
+
+        /* BOTÕES DOS CARTÕES */
+        .card-btn {
+            display: block;
+            width: 100%;
+            background-color: #00994d;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 12px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+        .card-btn:hover {
+            background-color: #007a3d;
+        }
+
+        /* RODAPÉ */
+        .footer {
+            background-color: #00529b;
+            color: #ffffff;
+            padding: 22px 15px;
+            text-align: center;
+            margin-top: auto;
+            border-top: 4px solid #008744;
+            font-size: 13px;
+        }
+
+        /* TELAS MÉDIAS */
+        @media (max-width: 1100px) {
+            .header {
+                padding: 12px 20px;
+            }
+
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-items {
+                gap: 5px;
+            }
+
+            .nav-button {
+                padding: 9px 10px;
+                font-size: 12px;
+            }
+        }
+
+        /* CELULARES E TABLETS */
+        @media (max-width: 768px) {
+            .nav {
+                justify-content: space-between;
+            }
+
+            .nav-brand {
+                gap: 8px;
+            }
+
+            .user-badge {
+                font-size: 11px;
+                padding: 6px 9px;
+            }
+
+            .nav-logo {
+                height: 32px;
+            }
+
+            .nav-brand h1 {
+                font-size: 16px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-items {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #ffffff;
+                border-top: 1px solid #eeeeee;
+                border-bottom: 1px solid #dddddd;
+                padding: 12px 20px;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 5px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.08);
+            }
+
+            .nav-items.open {
+                display: flex;
+            }
+
+            .nav-button {
+                display: block;
+                text-align: center;
+                padding: 12px;
+                font-size: 13px;
+            }
+
+            .atractions {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+            .card-header {
+                height: 130px;
+            }
+
+            .card-body {
+                padding: 0 16px 20px;
+            }
+        }
+
+        /* CELULARES PEQUENOS */
+        @media (max-width: 550px) {
+            .header {
+                padding: 12px 15px;
+            }
+
+            .nav-brand {
+                gap: 7px;
+            }
+
+            .user-badge {
+                font-size: 10px;
+                padding: 6px 8px;
+            }
+
+            .nav-brand h1 {
+                font-size: 14px;
+                letter-spacing: 0;
+            }
+
+            .nav-logo {
+                height: 28px;
+            }
+
+            .banner {
+                padding: 38px 18px;
+            }
+
+            .banner-content h2 {
+                font-size: 22px;
+            }
+
+            .banner-content p {
+                font-size: 13px;
+            }
+
+            .main {
+                margin-top: 28px;
+            }
+
+            .section-title {
+                font-size: 19px;
+            }
+
+            .atractions {
+                grid-template-columns: 1fr;
+                gap: 22px;
+            }
+
+            .card-header {
+                height: 150px;
+            }
+
+            .at-img {
+                max-height: 95px;
+            }
+
+            .card-body {
+                padding: 0 22px 22px;
+            }
+
+            .footer {
+                font-size: 11px;
+                line-height: 1.5;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+/* ==========================================================
+   ESTILOS ESPECÍFICOS — APROVAÇÃO DE ALUNOS
+   ========================================================== */
+
+body.pagina-aprovacao, body.pagina-aprovacao * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+body.pagina-aprovacao {
+            background-color: #f4f6f8;
+            color: #333333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+body.pagina-aprovacao .header {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 40px;
+        }
+
+body.pagina-aprovacao .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+body.pagina-aprovacao .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+body.pagina-aprovacao .nav-logo {
+            height: 38px;
+            width: auto;
+        }
+
+body.pagina-aprovacao .nav-brand h1 {
+            font-size: 20px;
+            color: #004d80;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+body.pagina-aprovacao .user-badge {
+            background-color: #003366;
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+body.pagina-aprovacao .user-badge a {
+            color: #ff6b6b;
+            text-decoration: none;
+            margin-left: 4px;
+        }
+
+body.pagina-aprovacao .user-badge a:hover {
+            text-decoration: underline;
+        }
+
+body.pagina-aprovacao .nav-items {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+body.pagina-aprovacao .nav-button {
+            text-decoration: none;
+            color: #004d80;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+body.pagina-aprovacao .nav-button.active {
+            background-color: #00994d;
+            color: #ffffff;
+        }
+
+body.pagina-aprovacao .nav-button:hover:not(.active) {
+            background-color: #e6f0fa;
+        }
+
+body.pagina-aprovacao .banner {
+            background: linear-gradient(90deg, #008542 0%, #004d80 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 45px 20px;
+        }
+
+body.pagina-aprovacao .banner h2 {
+            font-size: 26px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+body.pagina-aprovacao .banner p {
+            font-size: 13px;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.5;
+            opacity: 0.95;
+        }
+
+body.pagina-aprovacao .main {
+            width: 100%;
+            max-width: 1100px;
+            margin: 35px auto 60px;
+            padding: 0 20px;
+            flex: 1;
+        }
+
+body.pagina-aprovacao .titulo-secao {
+            text-align: center;
+            color: #004d80;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+body.pagina-aprovacao .titulo-secao::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: #00994d;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+body.pagina-aprovacao .escola {
+            text-align: center;
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+body.pagina-aprovacao .contador {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+body.pagina-aprovacao .contador span {
+            display: inline-block;
+            background-color: #e6f0fa;
+            color: #004d80;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+body.pagina-aprovacao .mensagem {
+            padding: 14px 18px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+body.pagina-aprovacao .mensagem.sucesso {
+            background-color: #e5f5eb;
+            color: #16743c;
+            border: 1px solid #b7e2c6;
+        }
+
+body.pagina-aprovacao .mensagem.erro {
+            background-color: #fdeaea;
+            color: #b42318;
+            border: 1px solid #f5c2c0;
+        }
+
+body.pagina-aprovacao .grade-alunos {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+body.pagina-aprovacao .aluno {
+            background-color: #ffffff;
+            border-radius: 12px;
+            border-top: 4px solid #00994d;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+body.pagina-aprovacao .aluno:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+        }
+
+body.pagina-aprovacao .aluno h3 {
+            color: #004d80;
+            font-size: 17px;
+            margin-bottom: 18px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+body.pagina-aprovacao .dados-aluno {
+            flex-grow: 1;
+        }
+
+body.pagina-aprovacao .dados-aluno p {
+            font-size: 13px;
+            color: #666666;
+            line-height: 1.6;
+            margin-bottom: 10px;
+            overflow-wrap: anywhere;
+        }
+
+body.pagina-aprovacao .dados-aluno strong {
+            color: #004d80;
+        }
+
+body.pagina-aprovacao .status-pendente {
+            display: inline-block;
+            background-color: #fff4d6;
+            color: #946200;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+body.pagina-aprovacao .acoes {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+body.pagina-aprovacao .acoes button {
+            flex: 1;
+            border: none;
+            padding: 11px 10px;
+            border-radius: 6px;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+
+body.pagina-aprovacao .aprovar {
+            background-color: #00994d;
+        }
+
+body.pagina-aprovacao .aprovar:hover {
+            background-color: #007a3d;
+        }
+
+body.pagina-aprovacao .rejeitar {
+            background-color: #dc3545;
+        }
+
+body.pagina-aprovacao .rejeitar:hover {
+            background-color: #b02a37;
+        }
+
+body.pagina-aprovacao .vazio {
+            background-color: #ffffff;
+            padding: 45px 25px;
+            text-align: center;
+            border-radius: 12px;
+            border-top: 4px solid #00994d;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+body.pagina-aprovacao .vazio h3 {
+            color: #004d80;
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+body.pagina-aprovacao .vazio p {
+            color: #666666;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+
+body.pagina-aprovacao .vazio-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+body.pagina-aprovacao .voltar {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #004d80;
+            font-size: 13px;
+            font-weight: bold;
+            padding: 10px 18px;
+            border: 1px solid #004d80;
+            border-radius: 6px;
+            transition: 0.2s;
+        }
+
+body.pagina-aprovacao .voltar:hover {
+            background-color: #004d80;
+            color: #ffffff;
+        }
+
+body.pagina-aprovacao .footer {
+            background-color: #00529b;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 50px;
+            border-top: 4px solid #008744;
+            font-size: 13px;
+        }
+
+@media (max-width: 900px) {
+body.pagina-aprovacao .header {
+                padding: 12px 20px;
+            }
+
+body.pagina-aprovacao .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+body.pagina-aprovacao .nav-brand {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+body.pagina-aprovacao .nav-items {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+}
+
+@media (max-width: 650px) {
+body.pagina-aprovacao .grade-alunos {
+                grid-template-columns: 1fr;
+            }
+
+body.pagina-aprovacao .banner {
+                padding: 35px 15px;
+            }
+
+body.pagina-aprovacao .banner h2 {
+                font-size: 22px;
+            }
+
+body.pagina-aprovacao .nav-brand h1 {
+                font-size: 17px;
+            }
+
+body.pagina-aprovacao .acoes {
+                flex-direction: column;
+            }
+
+body.pagina-aprovacao .main {
+                margin-top: 25px;
+            }
+}
+/* =========================================
+   TABELA DE FREQUÊNCIA
+========================================= */
+
+.pagina-frequencia .box-card {
+    overflow: hidden;
+}
+
+.pagina-frequencia .card-body {
+    width: 100%;
+}
+
+.pagina-frequencia .tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 25px 0;
+    border-radius: 10px;
+    border: 1px solid #dddddd;
+}
+
+.pagina-frequencia table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    text-align: left;
+}
+
+.pagina-frequencia thead {
+    background: #006b3c;
+    color: #ffffff;
+}
+
+.pagina-frequencia th {
+    padding: 16px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.pagina-frequencia td {
+    padding: 14px 18px;
+    font-size: 14px;
+    color: #333333;
+    border-bottom: 1px solid #e5e5e5;
+    vertical-align: middle;
+}
+
+.pagina-frequencia tbody tr:nth-child(even) {
+    background: #f4f7f5;
+}
+
+.pagina-frequencia tbody tr:hover {
+    background: #e5f4eb;
+    transition: background 0.2s ease;
+}
+
+.pagina-frequencia tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Código do aluno */
+.pagina-frequencia td:first-child {
+    text-align: center;
+    font-weight: bold;
+    color: #006b3c;
+}
+
+/* Nome do aluno */
+.pagina-frequencia td:nth-child(2) {
+    font-weight: 600;
+}
+
+/* Seletores da tabela */
+.pagina-frequencia table select {
+    min-width: 115px;
+    padding: 8px 10px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 14px;
+    cursor: pointer;
+    outline: none;
+}
+
+.pagina-frequencia table select:focus {
+    border-color: #009b55;
+    box-shadow: 0 0 0 2px rgba(0, 155, 85, 0.15);
+}
+
+/* Seleção da disciplina */
+.pagina-frequencia .frequencia-disciplina {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.pagina-frequencia .frequencia-disciplina label {
+    font-weight: bold;
+    color: #333333;
+}
+
+.pagina-frequencia .frequencia-disciplina select {
+    padding: 9px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background: #ffffff;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Botão de salvar */
+.pagina-frequencia .card-btn {
+    width: 100%;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+
+    .pagina-frequencia .tabela-container {
+        margin: 18px 0;
+    }
+
+    .pagina-frequencia th,
+    .pagina-frequencia td {
+        padding: 12px 10px;
+        font-size: 13px;
+    }
+
+    .pagina-frequencia table select {
+        min-width: 100px;
+        font-size: 13px;
+    }
+
+}
+
+/* =========================================
+   PÁGINA DE LANÇAMENTO DE NOTAS
+========================================= */
+
+.pagina-notas .box-card {
+    overflow: hidden;
+}
+
+.pagina-notas .card-body {
+    width: 100%;
+}
+
+.pagina-notas .notas-filtros {
+    display: flex;
+    align-items: end;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 25px 0;
+}
+
+.pagina-notas .notas-filtro-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 200px;
+}
+
+.pagina-notas .notas-filtro-grupo label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+}
+
+.pagina-notas .notas-filtro-grupo select {
+    padding: 10px 12px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* CONTAINER DA TABELA */
+
+.pagina-notas .notas-tabela-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+}
+
+.pagina-notas .tabela-notas {
+    width: 100%;
+    min-width: 1050px;
+    border-collapse: collapse;
+    background: #ffffff;
+    text-align: left;
+}
+
+/* CABEÇALHO */
+
+.pagina-notas .tabela-notas thead {
+    background: #006b3c;
+    color: #ffffff;
+}
+
+.pagina-notas .tabela-notas th {
+    padding: 15px 12px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* CÉLULAS */
+
+.pagina-notas .tabela-notas td {
+    padding: 12px;
+    font-size: 13px;
+    color: #333333;
+    border-bottom: 1px solid #e5e5e5;
+    vertical-align: middle;
+}
+
+.pagina-notas .tabela-notas tbody tr:nth-child(even) {
+    background: #f4f7f5;
+}
+
+.pagina-notas .tabela-notas tbody tr:hover {
+    background: #e5f4eb;
+    transition: background 0.2s ease;
+}
+
+.pagina-notas .tabela-notas tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.pagina-notas .tabela-notas .notas-codigo {
+    text-align: center;
+    font-weight: bold;
+    color: #006b3c;
+}
+
+.pagina-notas .tabela-notas .notas-nome {
+    min-width: 160px;
+    font-weight: 600;
+}
+
+.pagina-notas .tabela-notas .notas-vazio {
+    padding: 30px;
+    text-align: center;
+    color: #777777;
+}
+
+/* CAMPOS DE NOTAS */
+
+.pagina-notas .tabela-notas input[type="number"] {
+    width: 72px;
+    padding: 9px 5px;
+    border: 1px solid #cccccc;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #333333;
+    font-size: 14px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.pagina-notas .tabela-notas input[type="number"]:focus {
+    border-color: #009b55;
+    box-shadow: 0 0 0 3px rgba(0, 155, 85, 0.13);
+}
+
+/* MÉDIA */
+
+.pagina-notas .media-val {
+    text-align: center;
+    font-size: 15px !important;
+    font-weight: bold;
+    color: #006b3c !important;
+}
+
+/* SITUAÇÃO DO ALUNO */
+
+.pagina-notas .status-badge {
+    display: inline-block;
+    padding: 7px 11px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.pagina-notas .status-aprovado {
+    background: #d9f5e5;
+    color: #08743e;
+}
+
+.pagina-notas .status-recuperacao {
+    background: #ffe1e1;
+    color: #b42318;
+}
+
+/* BOTÃO DE SALVAR */
+
+.pagina-notas .notas-acoes {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.pagina-notas .notas-acoes .card-btn {
+    min-width: 200px;
+    cursor: pointer;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 768px) {
+
+    .pagina-notas .notas-filtros {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .pagina-notas .notas-filtro-grupo {
+        width: 100%;
+    }
+
+    .pagina-notas .notas-acoes {
+        justify-content: stretch;
+    }
+
+    .pagina-notas .notas-acoes .card-btn {
+        width: 100%;
+    }
+
+    .pagina-notas .tabela-notas th,
+    .pagina-notas .tabela-notas td {
+        padding: 10px;
+    }
+
+}
